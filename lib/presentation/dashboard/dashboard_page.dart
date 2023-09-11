@@ -1,4 +1,5 @@
 import 'package:calegpedia_apps/presentation/home/home_page.dart';
+import 'package:calegpedia_apps/presentation/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/images.dart';
@@ -29,9 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
       const Center(
         child: Text("Agenda"),
       ),
-      const Center(
-        child: Text("Profile"),
-      ),
+      const ProfilePage(),
     ];
   }
 
