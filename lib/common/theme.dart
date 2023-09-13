@@ -9,6 +9,7 @@ Color greyColor = const Color(0xFF707070);
 Color lighGreyColor = const Color(0xFFDEDEDE);
 Color whiteColor = const Color(0xFFFFFFFF);
 Color orangeColor = const Color(0xFFFFC979);
+Color transparentBlueColor = const Color.fromARGB(95, 195, 202, 236);
 
 TextStyle blueTextStyle = GoogleFonts.poppins(
   color: blueColor,
