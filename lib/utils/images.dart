@@ -16,4 +16,5 @@ class Images {
   static const String mailIcon = 'assets/icons/ic_mail.png';
   static const String lockIcon = 'assets/icons/ic_lock.png';
   static const String userIcon = 'assets/icons/ic_user.png';
+  static const String ktpImage = 'assets/images/img_ktp.png';
 }
