@@ -1,5 +1,6 @@
 import 'package:calegpedia_apps/presentation/home/home_page.dart';
 import 'package:calegpedia_apps/presentation/profile/profile_page.dart';
+import 'package:calegpedia_apps/presentation/sympathizer/sympathizer_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/images.dart';
@@ -24,9 +25,7 @@ class _DashboardPageState extends State<DashboardPage> {
     super.initState();
     _screens = [
       const HomePage(),
-      const Center(
-        child: Text("Doc"),
-      ),
+      const SympathizerPage(),
       const Center(
         child: Text("Agenda"),
       ),
