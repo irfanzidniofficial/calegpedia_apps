@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import '../../utils/images.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class SignInPage extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned(
-              top: 147,
+              top: 111,
               child: Image.asset(
-                Images.signInImage,
-                width: 181,
+                Images.signUpImage,
+                width: 171,
               ),
             ),
             Positioned(
-              bottom: 150,
+              bottom: 110,
               child: ClipRect(
                 child: BackdropFilter(
                   filter: ImageFilter.blur(
@@ -35,15 +35,11 @@ class SignInPage extends StatelessWidget {
                       20,
                     ),
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 1.2,
-                        color: Colors.white,
-                      ),
                       borderRadius: BorderRadius.circular(30),
                       color: transparentBlueColor,
                     ),
-                    height: 372,
-                    width: 334,
+                    height: 480,
+                    width: 335,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -51,14 +47,14 @@ class SignInPage extends StatelessWidget {
                           height: 14,
                         ),
                         Text(
-                          "Login",
+                          "Register",
                           style: blackTextStyle.copyWith(
                             fontSize: 22,
                             fontWeight: black,
                           ),
                         ),
                         Text(
-                          "Masuk ke akun anda",
+                          "Ayo Daftar Akun",
                           style: blackTextStyle.copyWith(
                             fontSize: 8,
                             fontWeight: semiBold,
@@ -67,9 +63,10 @@ class SignInPage extends StatelessWidget {
                         const SizedBox(
                           height: 24,
                         ),
-                        // todo email
+
+                        // todo name
                         Container(
-                          height: 50,
+                          height: 43,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
                           ),
@@ -79,6 +76,49 @@ class SignInPage extends StatelessWidget {
                               width: 2.0, // Lebar border
                             ),
                             // color: orangeColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  Images.userIcon,
+                                  color: blackColor,
+                                  width: 20,
+                                ),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    style: blackTextStyle,
+                                    decoration: InputDecoration.collapsed(
+                                      hintText: 'Nama Lengkap',
+                                      hintStyle: greyTextStyle.copyWith(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 14,
+                        ),
+                        //todo email
+                        Container(
+                          height: 43,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: lightBlueColor,
+                              width: 2.0, // Lebar border
+                            ),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Center(
@@ -107,13 +147,12 @@ class SignInPage extends StatelessWidget {
                             ),
                           ),
                         ),
-
                         const SizedBox(
                           height: 14,
                         ),
-                        // todo password
+                        //todo password
                         Container(
-                          height: 50,
+                          height: 43,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
                           ),
@@ -141,7 +180,7 @@ class SignInPage extends StatelessWidget {
                                     obscureText: true,
                                     style: blackTextStyle,
                                     decoration: InputDecoration.collapsed(
-                                      hintText: 'Password',
+                                      hintText: 'Your Password',
                                       hintStyle: greyTextStyle.copyWith(
                                         fontSize: 14,
                                       ),
@@ -152,19 +191,59 @@ class SignInPage extends StatelessWidget {
                             ),
                           ),
                         ),
-
                         const SizedBox(
-                          height: 31,
+                          height: 14,
                         ),
-
-                        // todo button sign in
+                        //todo confirm password
+                        Container(
+                          height: 43,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: lightBlueColor,
+                              width: 2.0, // Lebar border
+                            ),
+                            // color: orangeColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  Images.lockIcon,
+                                  color: blackColor,
+                                  width: 20,
+                                ),
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                                Expanded(
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    style: blackTextStyle,
+                                    decoration: InputDecoration.collapsed(
+                                      hintText: 'Your Password',
+                                      hintStyle: greyTextStyle.copyWith(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 26,
+                        ),
+                        //todo button sign up
                         SizedBox(
                           width: 293,
                           height: 44,
                           child: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/home');
-                            },
+                            onPressed: () {},
                             style: TextButton.styleFrom(
                               backgroundColor: blueColor,
                               shape: RoundedRectangleBorder(
@@ -174,7 +253,7 @@ class SignInPage extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              "SIGN IN",
+                              "SIGN UP",
                               style: whiteTextStyle.copyWith(
                                 fontSize: 16,
                                 fontWeight: semiBold,
@@ -189,7 +268,7 @@ class SignInPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Belum punya akun? ',
+                              'Sudah punya akun? ',
                               style: blackTextStyle.copyWith(
                                 fontSize: 12,
                                 fontWeight: bold,
@@ -197,10 +276,10 @@ class SignInPage extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushNamed(context, '/sign-up');
+                                Navigator.pop(context);
                               },
                               child: Text(
-                                'Sign Up',
+                                'Sign In',
                                 style: blackTextStyle.copyWith(
                                   fontSize: 14,
                                   fontWeight: black,
