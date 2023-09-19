@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:calegpedia_apps/bloc/auth/auth_bloc.dart';
 import 'package:calegpedia_apps/common/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/images.dart';
 
@@ -10,6 +12,9 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+
     return Scaffold(
       body: Center(
         child: Stack(
@@ -91,7 +96,6 @@ class SignUpPage extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: TextFormField(
-                                    obscureText: true,
                                     style: blackTextStyle,
                                     decoration: InputDecoration.collapsed(
                                       hintText: 'Nama Lengkap',
@@ -134,6 +138,7 @@ class SignUpPage extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: emailController,
                                     style: blackTextStyle,
                                     decoration: InputDecoration.collapsed(
                                       hintText: 'Email',
@@ -177,6 +182,7 @@ class SignUpPage extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: passwordController,
                                     obscureText: true,
                                     style: blackTextStyle,
                                     decoration: InputDecoration.collapsed(
@@ -238,28 +244,57 @@ class SignUpPage extends StatelessWidget {
                         const SizedBox(
                           height: 26,
                         ),
-                        //todo button sign up
-                        SizedBox(
-                          width: 293,
-                          height: 44,
-                          child: TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              backgroundColor: blueColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  8,
+                        //todo but,ton sign, up
+                        BlocConsumer<AuthBloc, AuthState>(
+                          listener: (context, state) {
+                            if (state is AuthSuccesState) {
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, "/sign-in", (route) => false);
+                            } else if (state is AuthErrorState) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: Colors.red,
+                                  content: Text(state.error),
+                                ),
+                              );
+                            }
+                          },
+                          builder: (context, state) {
+                            if (state is AuthLoadingState) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            return SizedBox(
+                              width: 293,
+                              height: 44,
+                              child: TextButton(
+                                onPressed: () {
+                                  context
+                                      .read<AuthBloc>()
+                                      .add(AuthRegisterEvent(
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                      ));
+                                },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: blueColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                      8,
+                                    ),
+                                  ),
+                                ),
+                                child: Text(
+                                  "SIGN UP",
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: semiBold,
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Text(
-                              "SIGN UP",
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: semiBold,
-                              ),
-                            ),
-                          ),
+                            );
+                          },
                         ),
                         const SizedBox(
                           height: 35,
