@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:calegpedia_apps/bloc/auth/auth_bloc.dart';
 import 'package:calegpedia_apps/common/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/images.dart';
 
@@ -10,6 +12,8 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     return Scaffold(
       body: Center(
         child: Stack(
@@ -94,6 +98,7 @@ class SignInPage extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: emailController,
                                     style: blackTextStyle,
                                     decoration: InputDecoration.collapsed(
                                       hintText: 'Email',
@@ -138,6 +143,7 @@ class SignInPage extends StatelessWidget {
                                 ),
                                 Expanded(
                                   child: TextFormField(
+                                    controller: passwordController,
                                     obscureText: true,
                                     style: blackTextStyle,
                                     decoration: InputDecoration.collapsed(
@@ -161,25 +167,52 @@ class SignInPage extends StatelessWidget {
                         SizedBox(
                           width: 293,
                           height: 44,
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/home');
+                          child: BlocConsumer<AuthBloc, AuthState>(
+                            listener: (context, state) {
+                              if (state is AuthSuccesState) {
+                                Navigator.pushNamedAndRemoveUntil(
+                                    context, '/home', (route) => false);
+                              } else if (state is AuthErrorState) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text(state.error),
+                                  ),
+                                );
+                              }
                             },
-                            style: TextButton.styleFrom(
-                              backgroundColor: blueColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  8,
+                            builder: (context, state) {
+                              if (state is AuthLoadingState) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                              return TextButton(
+                                onPressed: () {
+                                  // Navigator.pushNamed(context, '/home');
+                                  context.read<AuthBloc>().add(AuthSignInEvent(
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                      ));
+                                  // print(object)
+                                },
+                                style: TextButton.styleFrom(
+                                  backgroundColor: blueColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                      8,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            child: Text(
-                              "SIGN IN",
-                              style: whiteTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: semiBold,
-                              ),
-                            ),
+                                child: Text(
+                                  "SIGN IN",
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: semiBold,
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                         const SizedBox(

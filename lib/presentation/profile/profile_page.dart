@@ -1,4 +1,6 @@
+import 'package:calegpedia_apps/bloc/auth/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common/theme.dart';
 
@@ -197,7 +199,30 @@ class ProfilePage extends StatelessWidget {
                     color: greyColor,
                   ),
                 ),
-              )
+              ),
+              ListTile(
+                onTap: () {
+                  context.read<AuthBloc>().add(AuthSignOutEvent());
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, "/sign-in", (route) => false);
+                },
+                title: Text(
+                  "Logout",
+                  style: blackTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: regular,
+                  ),
+                ),
+                trailing: const Icon(
+                  Icons.navigate_next,
+                ),
+                shape: Border(
+                  bottom: BorderSide(
+                    width: 0.3,
+                    color: greyColor,
+                  ),
+                ),
+              ),
             ],
           )
         ],
