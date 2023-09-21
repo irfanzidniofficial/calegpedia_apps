@@ -1,5 +1,7 @@
 import 'package:calegpedia_apps/bloc/auth/auth_bloc.dart';
+import 'package:calegpedia_apps/common/theme.dart';
 import 'package:calegpedia_apps/data/datasources/auth_remote_datasource.dart';
+import 'package:calegpedia_apps/presentation/agenda/agenda_check_page.dart';
 import 'package:calegpedia_apps/presentation/dashboard/dashboard_page.dart';
 import 'package:calegpedia_apps/presentation/signin/sign_in_page.dart';
 import 'package:calegpedia_apps/presentation/signin/sign_up_page.dart';
@@ -34,15 +36,23 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            titleTextStyle: darkBlueTextStyle.copyWith(
+              fontSize: 30,
+              fontWeight: bold,
+            ),
+            centerTitle: true,
+          ),
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         //todo route sementara
-        initialRoute: '/sign-in',
+        initialRoute: '/home',
         routes: {
           '/sign-in': (context) => const SignInPage(),
           '/sign-up': (context) => const SignUpPage(),
           '/home': (context) => const DashboardPage(),
+          '/agenda-check': (context) => const AgendaCheckPage(),
         },
       ),
     );
