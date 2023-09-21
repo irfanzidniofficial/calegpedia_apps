@@ -1,3 +1,4 @@
+import 'package:calegpedia_apps/presentation/agenda/agenda_check_page.dart';
 import 'package:calegpedia_apps/presentation/home/home_page.dart';
 import 'package:calegpedia_apps/presentation/profile/profile_page.dart';
 import 'package:calegpedia_apps/presentation/sympathizer/sympathizer_page.dart';
@@ -26,9 +27,7 @@ class _DashboardPageState extends State<DashboardPage> {
     _screens = [
       const HomePage(),
       const SympathizerPage(),
-      const Center(
-        child: Text("Agenda"),
-      ),
+      const AgendaCheckPage(),
       const ProfilePage(),
     ];
   }

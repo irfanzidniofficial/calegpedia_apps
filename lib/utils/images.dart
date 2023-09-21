@@ -17,4 +17,10 @@ class Images {
   static const String lockIcon = 'assets/icons/ic_lock.png';
   static const String userIcon = 'assets/icons/ic_user.png';
   static const String ktpImage = 'assets/images/img_ktp.png';
+  static const String checkinImage = 'assets/images/img_checkin.png';
+  static const String checkoutImage = 'assets/images/img_checkout.png';
+  static const String checkinIcon = 'assets/icons/ic_checkin.png';
+  static const String checkoutIcon = 'assets/icons/ic_checkout.png';
+  static const String workingHoursIcon = 'assets/icons/ic_working_hours.png';
+  static const String calendarIcon = 'assets/icons/ic_calendar.png';
 }

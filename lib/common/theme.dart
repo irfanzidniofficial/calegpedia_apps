@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Color blueColor = const Color(0xFF748EF3);
+Color darkBlueColor = const Color(0xFF132F5A);
 Color toscaColor = const Color(0xFFBAF7FE);
 Color lightBlueColor = const Color(0xFFA2B2F0);
 Color blackColor = const Color(0xFF171717);
@@ -13,7 +14,15 @@ Color orangeColor = const Color(0xFFFFC979);
 Color transparentBlueColor = const Color.fromARGB(95, 195, 202, 236);
 
 TextStyle blueTextStyle = GoogleFonts.poppins(
-color: blueColor,
+  color: blueColor,
+);
+
+TextStyle darkBlueTextStyle = GoogleFonts.poppins(
+  color: darkBlueColor,
+);
+
+TextStyle lightBlueTextStyle = GoogleFonts.poppins(
+  color: lightBlueColor,
 );
 
 TextStyle blackTextStyle = GoogleFonts.poppins(

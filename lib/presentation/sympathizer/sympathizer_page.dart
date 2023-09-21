@@ -19,7 +19,7 @@ class SympathizerPage extends StatelessWidget {
             ),
             child: Text(
               "Data Simpatisan",
-              style: blackTextStyle.copyWith(
+              style: darkBlueTextStyle.copyWith(
                 fontSize: 30,
                 fontWeight: bold,
               ),
@@ -67,7 +67,7 @@ class SympathizerPage extends StatelessWidget {
           ),
           Text(
             "Scan KTP",
-            style: blackTextStyle.copyWith(
+            style: darkBlueTextStyle.copyWith(
               fontSize: 25,
               fontWeight: bold,
             ),
@@ -119,7 +119,7 @@ class ListDataWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: blackTextStyle.copyWith(
+                style: darkBlueTextStyle.copyWith(
                   fontSize: 20,
                   fontWeight: bold,
                 ),
